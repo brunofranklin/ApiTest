@@ -14,12 +14,14 @@ import static org.hamcrest.Matchers.*;
 public class idunaApi {
 
     String url_api = "https://iduna-test.pulsus.mobi";
+    String token = "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRfaWQiOjgwOSwiYWRtaW5pc3RyYXRvcl9pZCI6NTY1LCJleHAiOjE2NzQyNDkyMzEsIm5iZiI6MTY3NDE2MjgzMX0.hekEnWVztXsZtW9cKIOO8vzPdbUrTwYNh--Ukyh8wDQ";
+    String authToken = "Bearer "+token;
 
     public void tenantIdCredentials() {
 
         RestAssured.baseURI = url_api;
-        given().queryParam("Authorization", "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRfaWQiOjgwOSwiYWRtaW5pc3RyYXRvcl9pZCI6NTY1LCJleHAiOjE2NzQxNTc1MjMsIm5iZiI6MTY3NDA3MTEyM30.JOIL_v8802EGYchmDS-3QUPhDd7ZfiQzvQqK83AnRRE")
-                .header("Content-Type", "application/json")
+        given().header("Authorization", authToken)
+                .contentType("application/json")
                 .when().get("/792/credentials")
                 .then().log().all().assertThat().statusCode(200);
     }
