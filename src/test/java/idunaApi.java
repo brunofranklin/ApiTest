@@ -16,14 +16,27 @@ public class idunaApi {
     String url_api = "https://iduna-test.pulsus.mobi";
     String token = "eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRfaWQiOjgwOSwiYWRtaW5pc3RyYXRvcl9pZCI6NTY1LCJleHAiOjE2NzQyNDkyMzEsIm5iZiI6MTY3NDE2MjgzMX0.hekEnWVztXsZtW9cKIOO8vzPdbUrTwYNh--Ukyh8wDQ";
     String authToken = "Bearer "+token;
+    int tenant = 792;
 
+    @Test(priority = 1)
     public void tenantIdCredentials() {
 
         RestAssured.baseURI = url_api;
         given().header("Authorization", authToken)
                 .contentType("application/json")
-                .when().get("/792/credentials")
+                .when().get("/"+tenant+"/credentials")
                 .then().log().all().assertThat().statusCode(200);
+    }
+
+    @Test(priority = 2)
+    public void tenantIdCertificateProfiles(){
+
+        RestAssured.baseURI = url_api;
+        given().header("Authorization", authToken)
+                .contentType("application/json")
+                .when().get("/"+tenant+"/certificate-profiles")
+                .then().log().all().assertThat().statusCode(200);
+
     }
 
 
