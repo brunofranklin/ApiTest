@@ -8,6 +8,8 @@ import static io.restassured.RestAssured.given;
 public class freyrApi {
 
     String url_api_freyr = "https://freyr-test.pulsus.mobi";
+    String schema_name = "tenant_qa_tenant_teste_bruno_809";
+    int tenant = 809;
 
     public void health() {
 
@@ -22,7 +24,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("overview/809")
+                .when().get("overview/"+tenant)
                 .then().log().all().statusCode(200);
     }
 
@@ -30,7 +32,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("overview/809/active")
+                .when().get("overview/"+tenant+"/active")
                 .then().log().all().statusCode(200);
     }
 
@@ -38,7 +40,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("overview/809/low_battery")
+                .when().get("overview/"+tenant+"/low_battery")
                 .then().log().all().statusCode(200);
 
     }
@@ -47,7 +49,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("overview/809/gps_off")
+                .when().get("overview/"+tenant+"/gps_off")
                 .then().log().all().statusCode(200);
 
     }
@@ -56,7 +58,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("overview/809/not_synchronized")
+                .when().get("overview/"+tenant+"/not_synchronized")
                 .then().log().all().statusCode(200);
 
     }
@@ -65,7 +67,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("safetynet/setting/tenant_felipe_762")
+                .when().get("safetynet/setting/"+schema_name)
                 .then().log().all().statusCode(200);
     }
 
@@ -83,7 +85,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("wipe-message/wp/tenant_felipe_762")
+                .when().get("wipe-message/wp/"+schema_name)
                 .then().log().all().statusCode(200);
 
     }
@@ -92,7 +94,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("message/wp/tenant_felipe_762")
+                .when().get("message/wp/"+schema_name)
                 .then().log().all().statusCode(200);
 
     }
@@ -101,7 +103,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("group/by_id/809")
+                .when().get("group/by_id/"+tenant)
                 .then().log().all().statusCode(200);
 
     }
@@ -110,7 +112,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("group/tenant_felipe_762")
+                .when().get("group/"+schema_name)
                 .then().log().all().statusCode(200);
 
     }
@@ -119,7 +121,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("group/tenant_felipe_762/1/applications")
+                .when().get("group/"+schema_name+"/1/applications")
                 .then().log().all().statusCode(200);
 
     }
@@ -128,7 +130,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("group/tenant_felipe_762/policy/1/applications/filter")
+                .when().get("group/"+schema_name+"/policy/1/applications/filter")
                 .then().log().all().statusCode(200);
 
     }
@@ -137,7 +139,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("application/tenant_felipe_762")
+                .when().get("application/"+schema_name)
                 .then().log().all().statusCode(200);
 
     }
@@ -146,7 +148,7 @@ public class freyrApi {
 
         RestAssured.baseURI = url_api_freyr;
         given().header("Content-Type", "application/json")
-                .when().get("application/tenant_felipe_762/filter")
+                .when().get("application/"+schema_name+"/filter")
                 .then().log().all().statusCode(200);
 
     }
